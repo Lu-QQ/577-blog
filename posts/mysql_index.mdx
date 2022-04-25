@@ -1,0 +1,25 @@
+---
+title: 新的开始
+description: "多学习多产出"
+date: Sep 14 2021
+---
+
+## 什么是数据库索引
+数据库库索引能帮主我们快速检索得到我们需要的数据,索引是一种分散的数据结构,一般都是硬盘及索引.
+查询熟读的快慢可以说完全取决于我们的索引数据类型
+## 二叉树查找
+最先放进去的作为根节点,之后放进来的比根节点大的放到根节点右边,小的放到根节点的左边,这样一定程度上能够加快查询速度.但是如果都是自增的话我们查找就和全表查找没有什么区别.
+## 平衡二叉树
+平衡二叉树相对于二叉树,增加了树高度的约束,通过一些列的逻辑约束保证不会出现全表查询的情况(左旋转,右旋转).
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200813172325545.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0x1X1FR,size_16,color_FFFFFF,t_70#pic_center)
+二叉树的缺点:树的高度决定了查询的效率,每次都需要通过I/O.
+						每个磁盘节点保存的数据太小了,会浪费大量的空间.
+## 多路平衡树
+**多路代表引用子节点为三个,平衡代表最后子节点都在都在同一水平线上**
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200813173406238.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0x1X1FR,size_16,color_FFFFFF,t_70#pic_center)
+优点:将树的高瘦结构变成了矮胖结构
+## 增强多路平衡树
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200813174742145.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0x1X1FR,size_16,color_FFFFFF,t_70#pic_center)
+1.子节点不会保存在数据区,所有的数据区都会保存在叶子节点上,由于不保存数据区使得我们可以保存更多的关键字信息,使得树会更加矮,查询更快
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200813175046194.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0x1X1FR,size_16,color_FFFFFF,t_70#pic_center)
+
