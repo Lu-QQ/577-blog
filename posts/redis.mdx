@@ -20,7 +20,9 @@ Exec：执行队列中的redis操作
 discard：直接关闭创建的队列不需要执行
 ```
 
-![事务1](F:\学习\redis\图片\事务1.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/fd77707d63284e67a2f753c84f083ef0.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5bCP5aSq6ZizVCd1J1Q=,size_19,color_FFFFFF,t_70,g_se,x_16#pic_center)
+
+
 
 ### redis事务对异常的处理 
 
@@ -32,11 +34,15 @@ multi:开启组队，向队列中放redis指令时，
 
 #### 1.组队有语法错误执行情况
 
-![事务2](F:\学习\redis\图片\事务2.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/fa8763d62d474b23916923c4a528e735.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5bCP5aSq6ZizVCd1J1Q=,size_17,color_FFFFFF,t_70,g_se,x_16#pic_center)
+
+
 
 #### 2.组队无语法错误执行情况
 
-![事务3](F:\学习\redis\图片\事务3.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/2aff3d9fbb55424582425694877f8dd1.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5bCP5aSq6ZizVCd1J1Q=,size_17,color_FFFFFF,t_70,g_se,x_16#pic_center)
+
+
 
 ### 事务能应用的场景
 
@@ -66,9 +72,13 @@ multi:开启组队，向队列中放redis指令时，
 我们可以通过watch监听我们的key，然后开启事务，如果在事务开启组队过程中，我们监听的key被人修改了，那么我们组队完成执行事务时，将会不生效
 ```
 
-![事务4](F:\学习\redis\图片\事务4.jpg)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/4955d963c4b447979e340ea4ec7f2f03.png#pic_center)
 
-![事务5](F:\学习\redis\图片\事务5.jpg)
+
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/2b8334b788fb431dbb489e6401dc869a.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5bCP5aSq6ZizVCd1J1Q=,size_9,color_FFFFFF,t_70,g_se,x_16#pic_center)
+
+
 
 #### 案例展示
 
@@ -276,7 +286,9 @@ public class RedisTemplateUtil {
 Redis会单独创建（fork）一个子进程来进行持久化，会先将数据写入到 一个临时文件中，待持久化过程都结束了，再用这个临时文件替换上次持久化好的文件。 整个过程中，主进程是不进行任何IO操作的，这就确保了极高的性能 如果需要进行大规模数据的恢复，且对于数据恢复的完整性不是非常敏感，那RDB方式要比AOF方式更加的高效。RDB的缺点是最后一次持久化后的数据可能丢失。
 ```
 
-![RDB1](F:\学习\redis\图片\RDB1.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/a4f6d9a5e3c84e28b7b99619badfd638.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5bCP5aSq6ZizVCd1J1Q=,size_13,color_FFFFFF,t_70,g_se,x_16#pic_center)
+
+
 
 #### 相关配置
 
@@ -331,7 +343,9 @@ AOF默认不开启
 
 
 
-![AOF1](F:\学习\redis\图片\AOF1.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/18e35cd2ee894acda0c0d36ec292d79c.png#pic_center)
+
+
 
 #### 相关配置
 
@@ -386,11 +400,14 @@ port 6379
 dbfilename dump6379.rdb
 ```
 
-![一主多从1](F:\学习\redis\图片\一主多从1.jpg)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/1a57eb97222544149c16c1962a005ce1.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5bCP5aSq6ZizVCd1J1Q=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center)
+
+
 
 #### 启动三台全为master
 
-![一主多从2](F:\学习\redis\图片\一主多从2.jpg)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/0a63e48082804997ae0d4808abb71def.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5bCP5aSq6ZizVCd1J1Q=,size_20,color_FFFFFF,t_70,g_se,x_16)
+
 
 #### 配从(库)不配主(库) 
 
@@ -399,11 +416,15 @@ slaveof  <ip><port>
 成为某个实例的从服务器
 ```
 
-![一主多从3](F:\学习\redis\图片\一主多从3.jpg)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/6cab900ee07a4118a0cd78325a8e32fc.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5bCP5aSq6ZizVCd1J1Q=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center)
+
+
 
 #### 主写从读（从写会报错）
 
-![一主多从4](F:\学习\redis\图片\一主多从4.jpg)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/631db3658d16441a9b910ec6bdab31fd.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5bCP5aSq6ZizVCd1J1Q=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center)
+
+
 
 #### 一主多从总结
 
@@ -434,7 +455,9 @@ Master接到命令启动后台的存盘进程，同时收集所有接收到的�
 key对应的数据在数据源并不存在，每次针对此key的请求从缓存获取不到，请求都会压到数据源，从而可能压垮数据源。比如用一个不存在的用户id获取用户信息，不论缓存还是数据库都没有，若黑客利用此漏洞进行攻击可能压垮数据库。
 ```
 
-![缓存穿透](F:\学习\redis\图片\缓存穿透.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/00331ac0ee644bb9b81511fa9a979903.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5bCP5aSq6ZizVCd1J1Q=,size_19,color_FFFFFF,t_70,g_se,x_16#pic_center)
+
+
 
 #### 解决方案
 
@@ -453,7 +476,9 @@ key对应的数据在数据源并不存在，每次针对此key的请求从缓�
 key对应的数据存在，但在redis中过期，此时若有大量并发请求过来，这些请求发现缓存过期一般都会从后端DB加载数据并回设到缓存，这个时候大并发的请求可能会瞬间把后端DB压垮
 ```
 
-![缓存击穿](F:\学习\redis\图片\缓存击穿.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/b8b3316f614842e7999d624a27851d57.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5bCP5aSq6ZizVCd1J1Q=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center)
+
+
 
 #### 解决方案
 
@@ -469,7 +494,9 @@ key对应的数据存在，但在redis中过期，此时若有大量并发请求
 缓存雪崩与缓存击穿的区别在于这里针对很多key缓存，前者则是某一个key
 ```
 
-![缓存雪崩](F:\学习\redis\图片\缓存雪崩.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/ff2573579ea74cadbdc4b6511c5dca85.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5bCP5aSq6ZizVCd1J1Q=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center)
+
+
 
 #### 解决方案
 
